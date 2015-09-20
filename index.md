@@ -1,7 +1,7 @@
 ---
 layout: page
 title: noSQL, yesSQL & Couchbase
-tagline: a distributed cache, kv & document database with SQL!
+tagline: a distributed cache, kv & document database with SQL
 ---
 {% include JB/setup %}
 
@@ -13,7 +13,10 @@ tagline: a distributed cache, kv & document database with SQL!
   "lastname": "dhariwal",
   "employer": "Couchbase",
   "role": "noSQL Architect & Developer",
-  "email": ["terry@couchbase.com","terry.dhariwal@me.com"]
+  "email": [
+             "terry@couchbase.com",
+             "terry.dhariwal@me.com"
+           ]
 }
 {% endhighlight %}
 
