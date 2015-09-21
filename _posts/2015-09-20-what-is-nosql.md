@@ -34,7 +34,7 @@ There are many categories of noSQL databases. The key types are:
 * Graph
 * Full text search
 
-I <del>have explained</del> will explain each style of noSQL database in another blog. 
+I will explain each style of noSQL database in another blog. 
 
 ## common noSQL characteristics
 The following are common characteristics that noSQL databases strive for. Note not all noSQL databases exhibit all of these characteristics:
