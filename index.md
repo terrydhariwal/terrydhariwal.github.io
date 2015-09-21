@@ -30,9 +30,9 @@ This is my personal blog about noSQL and [Couchbase](http://www.couchbase.com) -
 * with ANSI compliant and extended SQL for document queries
  
 
-This blog <del>contains</del> will provide a series of articles to get you started with noSQL and Couchbase. 
+This blog will provide a series of articles to get you started with noSQL and Couchbase. 
 
-It <del>also explores</del> will also explore specific use-cases and advanced topics that are all too often not documented.  
+It will also explore specific use-cases and advanced topics that are all too often not documented.  
 
 <ul class="posts">
   {% for post in site.posts %}
