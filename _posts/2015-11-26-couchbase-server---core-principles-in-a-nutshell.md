@@ -14,7 +14,7 @@ However if you want a fast-track understanding of Couchbase - then this is the p
 
 ### [Part 1: Introducing Couchbase Server](/2015/11/26/part-1-introducing-couchbase-server/)
 * History of Couchbase
-* The 4 pillars of Couchbase
+* The 4 principles of Couchbase
 * Key features
 
 ### [Part 2: Couchbase architecture in a Nutshell](/2015/11/26/part-2-couchbase-architecture-in-a-nutshell/)
