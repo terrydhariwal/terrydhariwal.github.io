@@ -36,16 +36,18 @@ h1, h2, h3, h4, h5, h6 {
 
 /* line 35, ../_sass/_base.scss */
 a {
-  color: #4cb4e8;
+  /*terry*/
+  /*color: #4cb4e8;*/
+  color: #0078ff;
   -webkit-transition: all 0.3s;
   -moz-transition: all 0.3s;
   -ms-transition: all 0.3s;
   -o-transition: all 0.3s;
-  transition: all 0.3s;
+  transition: all 0.1s;
 }
 /* line 37, ../_sass/_base.scss */
 a:hover {
-  color: #d4edf9;
+  #color: #4cb4e8;
   text-decoration: none;
 }
 
