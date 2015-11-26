@@ -8,12 +8,21 @@ tags: []
 {% include JB/setup %}
 
 <h1><strong>History of Couchbase</strong></h1>
-Couchbase is an open source distributed cache, key value and JSON document database, that ships with a powerful and rich ANSI compliant SQL language for easy developer adoption. It emerged out of 2 open source projects, Memcached and CouchDB, to address modern scalability, performance, HA and data flexibility challenges.
+Couchbase is an open source, distributed cache, key value and JSON document database, that ships with a powerful and rich ANSI-compliant SQL language for easy developer adoption. 
 
-Memcached is a very popular open source caching technology used in all major verticals including finance, retail, gaming and social media to name a few. The original key developers of Memcached developed Membase as an enterprise ready Caching and Key Value database. Membase addressed many inherent limitations of Memcached:
+It emerged out of two open source projects, Memcached and CouchDB, to address modern scalability, performance, HA and data flexibility challenges.
+
+![Couchbase Evolution](/assets/images/couchbase-evolution.png)
+
+Memcached is a very popular open source caching technology. However it has many inherent limitations and as a result, the original engineers of Memcached developed Membase as a drop-in replacement. 
+
+Membase started out as an enterprise ready Caching and Key Value database and eventually evolved into Couchbase when CouchDB engineers added JSON document support. 
+
+As a result, Couchbase is a drop-in replacement for Memcached deployments as well as a powerful key-value and document database. In one consolidated solution you get the performance benefits of a cache and the persistence guarantees of a database. 
 
 {% highlight json %}
-[
+{
+	"Couchbase addresses inherent Memcached Limitations" : [
   	{
   		"#" : 1, 
   		"problem" : "No clustering, difficult to manage individual instances",
@@ -47,28 +56,52 @@ Memcached is a very popular open source caching technology used in all major ver
   		"solved" : true
   	}
  ]
+}
 {% endhighlight %}
 
-Membase then evolved into Couchbase by introducing JSON document support. Again, like Memcached, the original developers of CouchDB were responsible for adding JSON document support. Today, the original engineers of both open source technologies continue to work for Couchbase, adding cutting edge innovations and continuously improving performance and scale. 
-
-![Couchbase Evolution](/assets/images/couchbase-evolution.png)
+Today, the original engineers of both open source technologies continue to work for Couchbase, adding cutting edge innovations and continuously improving performance and scale. 
 
 
 <h1><strong>Key Couchbase Features</strong></h1>
 
-1. An enterprise Caching, Key Value and Document database solution
-2. Replication, Ultra high availability (Rack/Zone awareness)
-3. Cross data center replication for Disaster recovery
-4. ANSI Compliant SQL for JSON documents
-5. Geo Spatial Queries
-6. Distributed Indexes (Views) and Global secondary indexes
-7. Embedded database and Synchronization platform for offline/online and IOT use cases
-8. Full Text Search (developer preview)
+Couchbase provides a robust foundation focused on scale, performance and high availability for mission critical applications. On top of this solid foundation, Couchbase has added powerful developer features. In a nutshell it satisfies the needs of Architects/Operations & Developers. 
+
+1. Enterprise grade Caching, Key-Value and Document database solution
+2. High availability and Disaster Recovery
+	* Intelligent rack/zone aware replication
+	* Auto-failover
+	* Cross data center replication
+4. Comprehensive monitoring stats and programmatic management via REST/CLI
+5. Security
+	* Encryption over the wire, 
+	* On disk Encryption 
+	* LDAP/AD integration, roles and auditing
+6. SQL (ANSI compliant) for JSON documents
+	* Reuse SQL skills to easily query documents
+	* Extended SQL for JSON structures (embedded documents, collections) and flexible data models  
+	* Use prepared statements and even cache query plans
+	* ODBC/JDBC connectors
+7. Global secondary indexes
+	* Improve SQL query performance
+	* Queries can use multiple indexes (intersect-scans)
+	* Filters/Partial indexes using WHERE predicates
+	* Covering indexes
+	* Function based indexes
+8. Views (distributed indexes) built using incremental map/reduce
+	* Great for near realtime aggregations
+	* Composite indexes for powerful view queries
+	* Built in reducers for counts, sums, stats 
+	* Geo-spatial & multi-dimensional indexes and queries
+9. Multi-dimensional scaling
+	* Scale up or out
+	* KV, query & index workload isolation 
+10. Hadoop, Spark, Kafka, ES/Solr connectors
+11. Embedded database and Synchronization platform 
+	* For offline/online mobile apps
+	* Great for IOT use cases
+12. Full Text indexes and scored search results (developer preview)
 
 ![Couchbase - The Complete Data Management Solution](/assets/images/couchbas-data-platform.png)
-
-Its worth point out that Couchbase is now a completely distinct codebase from Memcached and CouchDB. 
-
 
 <h1><strong>The 4 principles of Couchbase</strong></h1>
 
