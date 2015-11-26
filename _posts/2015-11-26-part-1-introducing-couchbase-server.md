@@ -21,7 +21,7 @@ Memcached is the world's most popular open source caching technology used in all
 
 ![Couchbase Evolution](/assets/images/couchbase-evolution.png)
 
-Membase then evolved into Couchbase by introducing JSON document support. Again, like Memcached, the original developers of CouchDB were responsible for adding JSON document support. Today, the original engineers of both open source technologies continue to work for Couchbase, adding cutting edge innovations and continously improving performance and scale. 
+Membase then evolved into Couchbase by introducing JSON document support. Again, like Memcached, the original developers of CouchDB were responsible for adding JSON document support. Today, the original engineers of both open source technologies continue to work for Couchbase, adding cutting edge innovations and continuously improving performance and scale. 
 
 <h1><strong>Key Couchbase Features</strong></h1>
 
@@ -31,7 +31,7 @@ Membase then evolved into Couchbase by introducing JSON document support. Again,
 4. ANSI Compliant SQL for JSON documents
 5. Geo Spatial Queries
 6. Distributed Indexes (Views) and Global secondary indexes
-7. Embedded database and Synchronisation platform for offline/online and IOT usecases
+7. Embedded database and Synchronization platform for offline/online and IOT use cases
 8. Full Text Search (developer preview)
 
 ![Couchbase - The Complete Data Management Solution](/assets/images/couchbas-data-platform.png)
@@ -41,7 +41,7 @@ Its worth point out that Couchbase is now a completely distinct codebase from Me
 
 <h1><strong>The 4 principles of Couchbase</strong></h1>
 
-Couchbase is built about 4 priciples
+Couchbase is built about 4 principles
 
 1. <h2><strong>Consistent High Performance at Scale</strong></h2>
 - A single commodity server can support hundreds of thousands of operations per second
@@ -54,17 +54,17 @@ Couchbase is built about 4 priciples
 - Small clusters (3 to 10 servers) can handle extremely high throughput @ <1ms latency
 - Scale to billions of items
 
-3. <h2><strong>Enterprise level High Availability and Easy Maintence</strong></h2>
+3. <h2><strong>Enterprise level High Availability and Easy Maintenance</strong></h2>
 - Easily (again my mother can do it) replicate up to 3 times
 - Intelligently replicate with Rack/Zone awareness, allowing for multiple server failures, even with one replica copy
 - All maintenance tasks can be done with zero downtime
-- Replicate an entire database(s) across multiple data-centres for Disaster recovery
+- Replicate an entire database(s) across multiple data-centers for Disaster recovery
 
 4. <h2><strong>Flexible data model with Flexibly Queries</strong></h2>
 - No need to define rigid schemas, change or extend schema at runtime
-- JSON nativily maps to application objects
+- JSON natively maps to application objects
 - Extremely suited to agile development 
-- Use SQL to flexible express queries over your flexible data structure! (No need to learn a beskpoke query API)
+- Use SQL to flexible express queries over your flexible data structure! (No need to learn a bespoke query API)
 - Full text search (developer preview)
 
 ![Couchbase - 4 Principles of Couchbase](/assets/images/4pillars.png)
