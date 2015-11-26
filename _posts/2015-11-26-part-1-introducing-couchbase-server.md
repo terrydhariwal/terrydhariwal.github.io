@@ -8,20 +8,51 @@ tags: []
 {% include JB/setup %}
 
 <h1><strong>History of Couchbase</strong></h1>
-Couchbase emerged out of 2 open source projects, Memcached and CouchDB.
+Couchbase is an open source distributed cache, key value and a JSON document database with a rich ANSI compliant SQL language for easy developer adoption. It has emerged out of 2 open source projects, Memcached and CouchDB to address the scale and performance challenges e
 
-Memcached is the world's most popular open source caching technology used in all major verticals including finance, retail, gaming and social media to name a few. The original key developers of Memcached developed Membase as an enterprise ready Caching and Key Value database. Membase addressed many inherent limitations of Memcached:
+Memcached is a very popular open source caching technology used in all major verticals including finance, retail, gaming and social media to name a few. The original key developers of Memcached developed Membase as an enterprise ready Caching and Key Value database. Membase addressed many inherent limitations of Memcached:
 
-1. A consolidated Cache and Key Value database
-2. Clustered and distributed from the get-go
-3. Replication and Automatic High Availability
-4. Autosharding and easy scalability
-5. Disk persistence
+{% highlight json %}
+[
+  	{
+  		"#" : 1, 
+  		"problem" : "No clustering, difficult to manage individual instances",
+  		"solutions" : [ "Clustered & distributed from the get-go", 
+  		  		"120+ monitoring stats for easy maintance",
+  		  		"Rich Web UI for easy management",
+  		  		"Easy Programmatic management using REST/CLI"],
+  		"solved" : true
+  	},
+  	{
+  		"#" : 2,
+  		"problem" : "Cold Cache",
+  		"solutions" : [ "A consolidated Cache & Key Value database",
+  		  		"Warm-up from local disk"],
+  		"solved" : true
+  	},
+  	{
+  		"#" : 3,
+  		"problem" : "No high availability, crash == stampeding herd!",
+  		"solutions" : [ "Built-in Replication for high availability & Disaster Recovery",
+  		  		"Automatic failover"],
+  		"solved" : true
+  	},
+  	{
+  		"#" : 4,
+  		"problems" : [ "Key loss during scale out (Ketama hashing)", 
+  		  		"Manual code/config changes and app restarts required"],
+  		"solutions" : [ "Hash based auto-sharding == even data distribution == NO hot-spots",
+  		  		"100% Key availability during scale out",
+  		  		"Easily scale w/o touching app code/config & w/o restarting servers"],
+  		"solved" : true
+  	}
+ ]
+{% endhighlight %}
 
+Membase then evolved into Couchbase by introducing JSON document support. Again, like Memcached, the original developers of CouchDB were responsible for adding JSON document support. Today, the original engineers of both open source technologies continue to work for Couchbase, adding cutting edge innovations and continuously improving performance and scale. 
 
 ![Couchbase Evolution](/assets/images/couchbase-evolution.png)
 
-Membase then evolved into Couchbase by introducing JSON document support. Again, like Memcached, the original developers of CouchDB were responsible for adding JSON document support. Today, the original engineers of both open source technologies continue to work for Couchbase, adding cutting edge innovations and continuously improving performance and scale. 
 
 <h1><strong>Key Couchbase Features</strong></h1>
 
