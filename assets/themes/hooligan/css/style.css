@@ -7,23 +7,28 @@
 /* line 13, ../_sass/_base.scss */
 html, body {
   background-color: #2a2a2a;
-  background: url(../images/bgs/body.png) repeat;
+  /*terry*/
+  background: url(../images/bgs/body-white.png) repeat;
 }
 
 /* line 18, ../_sass/_base.scss */
 body {
-  color: #bbb;
-  text-shadow: 1px 1px 1px #000;
+  /*terry*/
+  /*color: #bbb;*/
+  color:#3E416B; /*nice*/
+  /* terry */
+  /*text-shadow: 1px 1px 1px #000;*/
   height: 100%;
   font-family: 'Oxygen', sans-serif;
   font-size: 14px;
 }
 
 /* line 26, ../_sass/_base.scss */
+/* terry */
 h1, h2, h3, h4, h5, h6 {
   margin: 0;
   font-weight: normal;
-  color: #999;
+  color: #000000;
   text-rendering: optimizelegibility;
   font-family: 'Advent Pro', sans-serif;
   /*font-family: 'Pontano Sans', sans-serif;*/
@@ -162,7 +167,9 @@ hr {
   -moz-box-shadow: rgba(255, 255, 255, 0.1) 0 1px 0, rgba(0, 0, 0, 0.8) 0 1px 7px 0px inset;
   box-shadow: rgba(255, 255, 255, 0.1) 0 1px 0, rgba(0, 0, 0, 0.8) 0 1px 7px 0px inset;
   background: #202020;
-  background-color: rgba(0, 0, 0, 0.3);
+  /*background-color: rgba(0, 0, 0, 0.3);*/
+  /*terry*/
+  background-color: #2C2C2C;
   border: none;
   padding: 20px 20px 10px;
   margin: 0px -20px 20px;
@@ -200,17 +207,29 @@ div.pagination li a {
 /* Buttons */
 /* line 176, ../_sass/_base.scss */
 a.btn, a.btn.disabled {
-  color: rgba(255, 255, 255, 0.7);
+  /*terry*/
+  /*color: rgba(255, 255, 255, 0.7);*/
+  color: white;
   text-shadow: 1px 1px 2px #000;
-  background: rgba(0, 0, 0, 0.2);
+  /*terry*/
+  /*background: rgba(0, 0, 0, 0.2);*/
+  background: black;
   border: none;
-  -moz-box-shadow: rgba(255, 255, 255, 0.1) 0 1px 0, rgba(0, 0, 0, 0.8) 0 1px 7px 0px inset;
+  /*terry*/
+/*  -moz-box-shadow: rgba(255, 255, 255, 0.1) 0 1px 0, rgba(0, 0, 0, 0.8) 0 1px 7px 0px inset;
   -webkit-box-shadow: rgba(0, 0, 0, 0.8) 0 1px 0, rgba(255, 255, 255, 0.5) 0 1px 1px 0px inset;
-  -o-box-shadow: rgba(255, 255, 255, 0.1) 0 1px 0, rgba(0, 0, 0, 0.8) 0 1px 7px 0px inset;
+  -o-box-shadow: rgba(255, 255, 255, 0.1) 0 1px 0, rgba(0, 0, 0, 0.8) 0 1px 7px 0px inset;*/
+    -moz-box-shadow: rgba(255, 255, 255, 0.1) 1px 1px 1px, rgba(0, 0, 0, 0.8) 1px 1px 7px 1px inset;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.8) 1px 1px 1px, rgba(255, 255, 255, 0.5) 1px 1px 1px 1px inset;
+  -o -box-shadow: rgba(255, 255, 255, 0.1) 1px 1px 1px, rgba(0, 0, 0, 0.8) 1px 1px 7px 1px inset;
+
 }
 /* line 187, ../_sass/_base.scss */
 a.btn:hover, a.btn.disabled:hover {
-  background: rgba(255, 255, 255, 0.05);
+  /*terry*/
+  /*background: rgba(255, 255, 255, 0.05);*/
+  background: white;
+  color: black;
 }
 /* line 190, ../_sass/_base.scss */
 a.btn.disabled, a.btn.disabled.disabled {
@@ -246,17 +265,26 @@ a.btn.disabled, a.btn.disabled.disabled {
 }
 
 /* line 223, ../_sass/_base.scss */
+/*terry*/
 .tag_box.inline a,
 .tag_box a {
   padding: 3px 6px;
   margin: 2px;
   background: rgba(255, 255, 255, 0.2);
-  color: white;
+  /*terry*/
+  /*color:white*/
+  color: black;
   border-radius: 3px;
   text-decoration: none;
+  /*terry*/
+  /*
   -moz-box-shadow: rgba(255, 255, 255, 0.1) 0 1px 0, rgba(0, 0, 0, 0.8) 0 1px 7px 0px inset;
   -webkit-box-shadow: rgba(0, 0, 0, 0.8) 0 1px 0, rgba(255, 255, 255, 0.5) 0 1px 1px 0px inset;
-  -o-box-shadow: rgba(255, 255, 255, 0.1) 0 1px 0, rgba(0, 0, 0, 0.8) 0 1px 7px 0px inset;
+  -o -box-shadow: rgba(255, 255, 255, 0.1) 0 1px 0, rgba(0, 0, 0, 0.8) 0 1px 7px 0px inset;
+  */
+  -moz-box-shadow: rgba(255, 255, 255, 0.1) 1px 1px 1px, rgba(0, 0, 0, 0.8) 1px 1px 7px 1px inset;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.8) 1px 1px 1px, rgba(255, 255, 255, 0.5) 1px 1px 1px 1px inset;
+  -o -box-shadow: rgba(255, 255, 255, 0.1) 1px 1px 1px, rgba(0, 0, 0, 0.8) 1px 1px 7px 1px inset;
 }
 /* line 235, ../_sass/_base.scss */
 .tag_box.inline a:hover,
