@@ -8,7 +8,7 @@ tags: []
 {% include JB/setup %}
 
 <h1><strong>History of Couchbase</strong></h1>
-Couchbase is an open source distributed cache, key value and a JSON document database with a rich ANSI compliant SQL language for easy developer adoption. It has emerged out of 2 open source projects, Memcached and CouchDB to address the scale and performance challenges e
+Couchbase is an open source distributed cache, key value and JSON document database, that ships with a powerful and rich ANSI compliant SQL language for easy developer adoption. It emerged out of 2 open source projects, Memcached and CouchDB, to address modern scalability, performance, HA and data flexibility challenges.
 
 Memcached is a very popular open source caching technology used in all major verticals including finance, retail, gaming and social media to name a few. The original key developers of Memcached developed Membase as an enterprise ready Caching and Key Value database. Membase addressed many inherent limitations of Memcached:
 
