@@ -21,6 +21,7 @@ Couchbase has been built from the ground up to be a distributed database with ea
 	<!-- * Geo-spatial & Multi-dimensional queries<br /><br /> -->
 4. Couchbase <strong><font size="4" color="#FFB300">Full Text Search</font></strong> (developer preview at time of writing this blog)
 
+This blog aims to explain why Couchbase is so easy to use for both developers and DBA operation teams.
 
 <br />
 {% highlight json %}
@@ -55,12 +56,12 @@ One of the key reasons why Couchbase is easy to scale is because you don't need 
 <ol style="list-style-type: lower-alpha">
   <li>spin up a commodity server(s)</li>
   <li>install Couchbase</li>
-  <li>add the server(s) to an existing cluster and rebalance (or initialize a new one)</li>
+  <li>add the server(s) to an existing cluster (and rebalance) OR initialize a new cluster</li>
 </ol>
 
 That's it! No complex configuration files, no external load balancers required and no arduous manual steps. Furthermore, it is an online process; done without code changes to your application, no downtime and no performance impact. So easy that my 8 year old could do it.
 
-Next we delve a little deeper into the single node architecture and discuss the two key processes running inside Couchbase Server; the Data and Cluster Managers 
+Next we delve a little deeper into the single node architecture and discuss two key processes running inside Couchbase Server; the Data and Cluster Managers 
 <br />
 
 ![Couchbase Single Node Type](/assets/images/couchbase-single-node-type.png)
@@ -68,30 +69,33 @@ Next we delve a little deeper into the single node architecture and discuss the 
 <br /><br />
 
 <h2>The Data manager</h2>
-This is the user-access path to your data, whether it be KV operations, or View/SQL and Full text search queries. Each service (Data, Index and Query) can be enabled or disabled depending on the role you want to assign a Couchbase server. This feature is called **Multi Dimensional Scaling** (MDS) and it enables you to architect the cluster to suit your needs. More on this later.
+This is the user-access path to your data, whether it be KV operations, or View/SQL queries (and future Full text search). Each service (Data, Index and Query) can be enabled or disabled depending on the role you want to assign a Couchbase server. This feature is called **Multi Dimensional Scaling** (MDS) and it enables you to architect the cluster to suit your needs. More on this later.
 
 It's also worth mentioning that Couchbase topology changes can be made at runtime without breaking your application. This is possible because Couchbase SDK's are smart clients, they allow for cluster topology changes at runtime . Simply change the cluster topology without any code changes or application restarts. Furthermore, Couchbase smart clients automatically route KV operations, View, SQL and Full text search queries to the correct Couchbase servers. Therefore MDS and Couchbase smart client technology makes Couchbase both developer and operations friendly.
 
-The ***Data service*** is responsible for storing and retrieving your JSON and binary data using Key Value CRUD operations. Key Value CRUD operations provide the highest throughput and sub-millisecond access to your data. 
 
-The data service is also responsible for storing ***local*** view indexes created using map reduce functions written in JavaScript. View indexes allow querying of data using secondary indexes. You can also use views to perform light weight near real time aggregations (counts, sums, averages etc). Views are stored with the underlying key value data they index. Since Couchbase data is distributed across data service nodes, view indexes are therefore also distributed across all data service nodes. 
+The <span style="text-decoration:underline;">***Data Service***</span> is responsible for storing and retrieving your JSON and binary data using Key Value CRUD operations. Key Value CRUD operations provide the highest throughput and sub-millisecond access to your data. The data service is also responsible for storing ***local*** view indexes created using map reduce functions written in JavaScript. View indexes allow querying of data using secondary indexes. You can also use views to perform light weight near real time aggregations (counts, sums, averages etc). Views are stored with the underlying key value data they index. Since Couchbase data is distributed across data service nodes, view indexes are therefore also distributed across all data service nodes. 
 
-The ***Index service*** is responsible for Global Secondary Indexes (GSI) that support SQL queries. A key difference between Views and GSI indexes are that views are always distributed across all data service nodes whilst GSI indexes are isolated from the data service and are global (not distributed). In a nutshell:
+The <span style="text-decoration:underline;">***Index Service***</span> is responsible for Global Secondary Indexes (GSI) that support SQL queries. A key difference between Views and GSI indexes are that views are always distributed across all data service nodes whilst GSI indexes are isolated from the data service and are global (not distributed). It's important to understand the differences between key/value, view and GSI indexes:
 
-* Key value access automatically routes requests to the correct server in one network hop. Key value provides linear scalability, the best throughput (hundreds of thousands to millions of operations per second) and the lowest latency (~1ms)
-* View indexes are LOCAL to key value data and hence DISTRIBUTED across all data service nodes. Querying indexes incurs a scatter-gather overhead, because a query must span all servers that store a part of the index.
-* and GSI indexes are GLOBALLY stored on SINGLE servers, so queries don't incur the scatter gather overhead. This makes scanning of GSI much faster than views.
+* Couchbase provides Key value data access by automatically routing requests to the correct servers in single network hops. Key value is actually an index (a primary one) architected as an in-memory hash table distributed across all data service enabled servers. Key value provides linear scalability, the best throughput (hundreds of thousands to millions of operations per second) and the lowest latency (<1ms)
+* View indexes provide an alternative approach to data access, for those occasions when you don't know the primary keys for the documents you want to retrieve. Views allow you to access data based on indexed JSON fields. View indexes are ***local*** to key value data and hence ***distributed*** across all data service nodes. Querying view indexes incurs a scatter-gather overhead, because a query must span across all data-service enabled servers (since each one stores a part of the view index). However updates to view indexes are very fast because they are local to the underlying key value data and updates are made concurrently across all data-service servers.
+* GSI indexes also provide an alternative data access path to your document data. The key difference between view and GSI indexes is that GSI indexes are ***globally*** stored on ***single*** servers (but can be replicated for high availability). Therefore queries underpinned by GSI indexes do not incur the scatter gather overhead. This makes scanning of GSI much faster than views.
 
-The last service is the ***Query service*** which is responsible for serving SQL requests and works in coordination with the ***Index & Data services***.
+Lastly, the <span style="text-decoration:underline;">***Query Service***</span> is responsible for serving SQL requests and works in coordination with the ***Index & Data services***. SQL queries can leverage both GSI and view indexes. The query language is ANSI compliant SQL but is extended with additional capabilities that allow you to deal with the unstructured and hierarchal aspects of JSON, for example:
+
+* you can deal with missing or null fields
+* you can access embedded JSON data using dot notation
+* you can query, nest and unnest collections
 
 The data manager process is written in C/C++ to provide the fastest, most direct and most optimized access path to underlying hardware resources and data. For this reason C based languages are the ideal language of choice for developing high performance and scalable database engines. 
 
-Virtual machine (VM) based languages such as Erlang or Java should ideally be avoided when developing database engines, because you don't have direct access or direct control of memory. As a result VM based database engines are not as performance optimized as C/C++ ones. Also garbage collection may significantly impact database performance whilst running, unless you customize and tune the standard JVMs gc settings or invest in an enterprise JVM with efficient gc.
+Virtual machine (VM) based languages such as Erlang or Java should ideally be avoided when developing high performance database engines, because you don't have direct access or direct control of memory. As a result VM based database engines are not as performance optimized as C/C++ ones. Also garbage collection may significantly impact database performance whilst running, unless you customize and tune the standard JVMs garbage collection (gc) settings or invest in an enterprise JVM with efficient gc.
 <br/><br/>
 
 
 <h2>The Cluster manager</h2>
-The cluster manager process allows users to manage and administrate the cluster. It also generates node level and cluster wide statistics for monitoring. This process is written in Erlang because it is an ideal language for building distributed systems. However, Erlang is a VM and for reasons already stated, it is not ideal for developing high performance and scalable database engines (the user-access path to data). This is fine because the cluster manager is not part of the user-access path.
+The cluster manager process allows users to manage and administrate the cluster. It also generates node level and cluster wide statistics for monitoring. This process is written in Erlang because it is an ideal language for building distributed systems. Erlang is a VM based language and for reasons already stated, it is not ideal for developing high performance and scalable database engines (the user-access path to data). For this reason, Erlang is mainly used for cluster management which is not part of the user-access path.
 
 The cluster manager provides a rich web UI for full administrative management and exposes extensive monitoring statistics and graphs. This UI allows you to add/remove servers, create and configure buckets (synonymous to databases), configure cluster-wide options for resource and data management, configure security and a whole lot more. 
 
@@ -158,7 +162,7 @@ Indexing is a lot more CPU intensive compared to the data service (assuming its 
 
 Note that it is possible (and recommended for high availability) to provision multiple index enabled nodes. To gain high availability administrators can create the same indexes on multiple index service nodes. The Couchbase cluster will automatically load balance scans requests from SQL queries (from query service nodes) across these index enabled servers. This helps remove hot spots to a single GSI server (especially for a heavily utilized index) and provides high availability in the case of server failures.
 
-In a nutshell I recommends at least 2 index service nodes with mirrored indexes for high availability.
+In a nutshell I recommend at least 2 index service nodes with mirrored indexes for high availability.
 
 <h2>Query service</h2>
 
