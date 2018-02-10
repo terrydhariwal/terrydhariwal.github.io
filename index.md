@@ -11,12 +11,7 @@ tagline: a distributed cache, kv & document database with SQL
 {
   "firstname": "terry",
   "lastname": "dhariwal",
-  "employer": "Couchbase",
   "role": "noSQL Architect & Developer",
-  "email": [
-             "terry@couchbase.com",
-             "terry.dhariwal@me.com"
-           ]
 }
 {% endhighlight %}
 
